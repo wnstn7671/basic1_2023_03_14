@@ -100,15 +100,37 @@ public class HomeController {
         return "%d번 사람이 삭제되었습니다.".formatted(id);
     }
 
+    @GetMapping("/home/modifyPerson")
+    @ResponseBody
+    public String modifyPerson(int id, String name, int age) {
+        Person found = people
+                .stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (found == null) {
+            return "%d번 사람이 존재하지 않습니다.".formatted(id);
+        }
+
+        found.setName(name);
+        found.setAge(age);
+
+        return "%d번 사람이 수정되었습니다.".formatted(id);
+    }
 }
     @AllArgsConstructor
     @Getter
     @ToString
 class Person {
     private static int lastId;
+
+
     private final int id;
-    private final String name;
-    private final int age;
+    @Setter
+    private  String name;
+    @Setter
+    private  int age;
 
 
     static {
