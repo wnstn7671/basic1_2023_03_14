@@ -23,7 +23,7 @@ public class MemberController {
     return "usr/member/login";
     }
 
-    @PostMapping("/member/Login")
+    @PostMapping("/member/login")
     @ResponseBody
     public RsData login(String username, String password) {
         if (username == null || username.trim().length() == 0) {
