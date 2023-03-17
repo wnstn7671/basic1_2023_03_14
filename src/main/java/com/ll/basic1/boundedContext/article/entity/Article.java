@@ -12,7 +12,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Getter
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Article {
     @Id // PRIMARY KEY
